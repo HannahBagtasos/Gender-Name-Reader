@@ -3,20 +3,42 @@
 <head>
 <link rel="stylesheet" href="style.css">
 <title> Hannah's project </title> <!-- Remember to change this later -->
+
+<script src="./genderapi.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
 </head>
 <body>
 
     <hr>
-    <h1> Gender API Test hello</h1>
+    <h1> Gender API Project</h1>
     <hr>
      
-    <p>Just testing text</p>
+    <label for="Name">Name:</label> <input type="text" id="input" placeholder="Enter names eg Joe Smith">
+    <br>
+    <button onclick="myFunction()" id="button">Submit</button>
 
 
 
 
+    <script type="text/javascript"> 
+        function myFunction()
+            {
+                var string= document.getElementById("input").value;
+                alert("Input was " + string);
+            }
+    </script>
 
-<script src="./genderapi.js"> </script>
+    <script>
+        mermaid.initialize({startOnLoad:true});
+    </script>
+
+    <div class="mermaid">
+        pie title Gender Chart
+            "Female":30
+            "Male":70
+    </div>
+
 
 </body>
 </html>
