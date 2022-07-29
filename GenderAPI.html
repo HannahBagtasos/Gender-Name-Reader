@@ -6,10 +6,11 @@
 
 <script src="./genderapi.js"> </script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
 
 </head>
 <body>
-
+    <!-- The title-->
     <hr>
     <h1> Gender API Project</h1>
     <hr>
@@ -20,25 +21,79 @@
 
 
 
-
+    <!-- User input section + Pie chart -->
     <script type="text/javascript"> 
         function myFunction()
             {
                 var string= document.getElementById("input").value;
                 alert("Input was " + string);
+                var gender = ["Male","Female"];
+                var percentage = [string];
+                var colours = ["#f99db8","#68c7f4"];
+
+                new Chart("myChart", {
+                type: "pie",
+                data: {
+                labels: gender,
+                datasets:
+                [{
+                 backgroundColor: colors,
+                 data: percentage
+                }]
+                },
+                options: {
+                title: 
+                {
+                 display: true,
+                 text: "Percentage of male authors to female authors"
+                }
+                }
+            });
             }
     </script>
+    
+    <!-- Testing to see if I can send information to Gender API -->
+    <form id="input">
+        <input type="text" placeholder="Name">
+        <button type="submit">Submit</button>
+    </form>
 
     <script>
-        mermaid.initialize({startOnLoad:true});
+        $('#input').submit(function (e) {
+            e.preventDefault(); //doesn't submit
+
+            var form = $(this);
+            var url = 'http://parseapi.com/';
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: form.serialze(),
+                success: function(data)
+                {
+                    alert(data);
+                }
+            })
+        })
     </script>
+
+    
+
+
+</body>
+
+
+   <!-- User input section + Pie chart 
+     <script>
+        mermaid.initialize({startOnLoad:true});
+     </script>
 
     <div class="mermaid">
         pie title Gender Chart
             "Female":30
             "Male":70
     </div>
+    -->
 
 
-</body>
 </html>
