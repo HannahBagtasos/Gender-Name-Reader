@@ -1,27 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-<link rel="stylesheet" href="style.css">
-<title> Hannah's project </title> <!-- Remember to change this later -->
+<head> 
+ <meta charset="UTF-8">
+ <title> The Gender Reader Project </title> 
+ <link rel="stylesheet" href="./style.css">
 
-<script src="./genderapi.js"> </script>
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
+ <script defer src="./genderapi.js"> </script> <!-- Gender API -->
+ <!-- <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> --> <!-- Mermard API -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script> <!-- other Pie Chart -->
+
 
 </head>
 <body>
-    <!-- The title-->
+    <!-- The title
     <hr>
-    <h1> Gender API Project</h1>
+    <h1> Gender Reader Project</h1>
     <hr>
+    -->
+    
+    <!-- Updating my user input, no longer using form attributes. -->
+    <div class="page">
+        <span class="gender text">Gender</span> <span class="reader text">Reader</span><br>
+        <input class="input" type="text" id="input" placeholder="Enter names eg Jane Doe"> <!-- re-using and updating from old user input-->
+        <button class="submit" type="submit" id="submit">Submit</button>
+        <p class="test name"></p>
+        <p class="test gender"></p>
+        <p class="test accuracy"></p>
+        <p class="test duration"></p>
+        <p class="test message"></p>
+
+
+
+
+    </div>
+
+
      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Work in progress code -->
+     <!-- old user input 
     <label for="Name">Name:</label> <input type="text" id="input" placeholder="Enter names eg Joe Smith">
     <br>
     <button onclick="myFunction()" id="button">Submit</button>
-
-
+    -->
 
     <!-- User input section + Pie chart -->
+    <!--
     <script type="text/javascript"> 
         function myFunction()
             {
@@ -51,9 +88,11 @@
             });
             }
     </script>
+    -->
     
     <!-- Testing to see if I can send information to Gender API -->
-    <form id="input">
+    <!--
+    <form id="input" action="https://gender-api.com/get?name={name}">
         <input type="text" placeholder="Name">
         <button type="submit">Submit</button>
     </form>
@@ -63,7 +102,7 @@
             e.preventDefault(); //doesn't submit
 
             var form = $(this);
-            var url = 'http://parseapi.com/';
+            var url = 'http://gender-api.com/';
 
             $.ajax({
                 type: "POST",
@@ -76,6 +115,7 @@
             })
         })
     </script>
+    -->
 
     
 
