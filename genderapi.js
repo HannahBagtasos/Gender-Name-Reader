@@ -1,9 +1,10 @@
 let inputn = document.querySelector(".input")
 let button = document.querySelector(".submit")
-let name = document.querySelector(".name")
+let name_sanitized = document.querySelector(".name")
 let gender = document.querySelector(".gender")
 let accuracy = document.querySelector(".accuracy")
-let duration = document.querySelector(".duration")
+// let country = document.querySelector(".country")  doesn't work properly
+let samples = document.querySelector(".samples")
 let message = document.querySelector(".message")
 
 let getGender = async () => {
@@ -11,17 +12,27 @@ let getGender = async () => {
         let textInput = inputn.value.trim()
         let response = await fetch(`https://gender-api.com/get?name=${textInput}&key=orDyQFjgVfF8cgVsV5CSoRAXkmjEtckDX9Q7`)
         let result = await response.json()
-        if(result.gender === null || result.gender === undefined) {
+        if(result.gender === null || result.gender === 'unknown') {
             message.innerHTML = "<h2>I didn't quite get that, enter a new name...</h2>"
-            message.style.color = "red"
+            message.style.color = "macaroon"
         }
         else {
-            name.innerHTML = `<h2>Name: ${result.name}</h2>`
+            name_sanitized.innerHTML = `<h2>Name: ${result.name_sanitized}</h2>`
+            name_sanitized.style.color = "white"
+
             gender.innerHTML = `<h2>Gender: ${result.gender}</h2>`
-            probability.innerHTML = `<h2>Accuracy: ${result.probability}</h2>`
-            count.innerHTML = `<h2>Duration: ${result.count}</h2>`
-            message.innerHTML = "<h2>Did I detect that correctly? :D </h2>"
-            message.style.color = "green"
+            gender.style.color = "white"
+
+            accuracy.innerHTML = `<h2>Accuracy: ${result.accuracy}</h2>`
+            accuracy.style.color = "white"
+
+            samples.innerHTML = `<h2>Number of samples used: ${result.samples}</h2>`
+            samples.style.color = "white"
+
+            //country.innerHTML = `<h2>Country of origin: ${result.country}</h2>`
+
+            message.innerHTML = "<h2>Did I detect that correctly?</h2>"
+            message.style.color = "Lime"
         }
     } catch (error) {
         console.log(`${error}`)

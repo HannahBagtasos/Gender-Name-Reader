@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Fredoka One', sans-serif;
-    background-color: rgb(255, 255, 255); /* change this later */
+    background-color: #8F73FF; /* change this later */
   }
   
   .page{
@@ -16,12 +16,12 @@ body {
 
   }
 
-  .gender{
-    color:aqua;
+  .first{
+    color:#FF739D;
   }
 
-  .reader{
-    color:pink;
+  .second{
+    color:#73FFD5;
 
   }
 
@@ -45,6 +45,15 @@ body {
   .test{
     font-size: 28px;
 
+  }
+
+  @media (max-width: 600px) {
+    .page{
+      width:400px;
+    }
+    .input{
+      width:400px;
+    }
   }
 
 

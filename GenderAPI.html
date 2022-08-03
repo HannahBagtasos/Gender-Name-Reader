@@ -3,7 +3,7 @@
 <head> 
  <meta charset="UTF-8">
  <title> The Gender Reader Project </title> 
- <link rel="stylesheet" href="./style.css">
+ <link rel="stylesheet" href="style.css"> <!-- had to take it out of the folder-->
 
  <script defer src="./genderapi.js"> </script> <!-- Gender API -->
  <!-- <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> --> <!-- Mermard API -->
@@ -20,18 +20,17 @@
     
     <!-- Updating my user input, no longer using form attributes. -->
     <div class="page">
-        <span class="gender text">Gender</span> <span class="reader text">Reader</span><br>
-        <input class="input" type="text" id="input" placeholder="Enter names eg Jane Doe"> <!-- re-using and updating from old user input-->
-        <button class="submit" type="submit" id="submit">Submit</button>
-        <p class="test name"></p>
-        <p class="test gender"></p>
-        <p class="test accuracy"></p>
-        <p class="test duration"></p>
-        <p class="test message"></p>
-
-
-
-
+        
+            <span class="first text">Gender</span> <span class="second text">Reader</span><br>
+            <input class="input" type="text" id="input" placeholder="Enter names eg Jane Doe"> <!-- re-using and updating from old user input-->
+            <button class="submit" type="submit" id="submit">Submit</button>
+            <p class="test name"></p>
+            <p class="test gender"></p>
+            <!-- <p class="test country"></p> -->
+            <p class="test accuracy"></p>
+            <p class="test samples"></p>
+            <p class="test message"></p>
+     
     </div>
 
 
