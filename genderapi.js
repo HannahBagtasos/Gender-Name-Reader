@@ -6,12 +6,17 @@ let accuracy = document.querySelector(".accuracy")
 // let country = document.querySelector(".country")  doesn't work properly
 let samples = document.querySelector(".samples")
 let message = document.querySelector(".message")
+let genderm = 0;
+let genderf = 0;
+let genderu = 0;
 
 let getGender = async () => {
     try {
         let textInput = inputn.value.trim()
         let response = await fetch(`https://gender-api.com/get?name=${textInput}&key=orDyQFjgVfF8cgVsV5CSoRAXkmjEtckDX9Q7`)
         let result = await response.json()
+        
+
         if(result.gender === null || result.gender === 'unknown') {
             message.innerHTML = "<h2>I didn't quite get that, enter a new name...</h2>"
             message.style.color = "macaroon"
@@ -34,12 +39,41 @@ let getGender = async () => {
             message.innerHTML = "<h2>Did I detect that correctly?</h2>"
             message.style.color = "Lime"
         }
+
+        if(result.gender === 'female'){
+            genderf++;
+            console.log("There is this many female names generated: " + genderf);
+        }
+        else if (result.gender === 'male'){
+            genderm++;
+            console.log("There is this many male names generated: " + genderm);
+        
+        }
+        else{
+            genderu++;
+            console.log("There is this many unknown names generated: " + genderu );
+
+        }
+
+        
+    
+        
+
+
     } catch (error) {
         console.log(`${error}`)
     }
 }
 
 button.addEventListener("click", getGender)
+
+
+
+
+      
+
+
+
 
 
 
