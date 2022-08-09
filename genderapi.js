@@ -1,5 +1,5 @@
 let inputn = document.querySelector(".input")
-let button = document.querySelector(".submit")
+let button = document.querySelector(".button")
 let name_sanitized = document.querySelector(".name")
 let gender = document.querySelector(".gender")
 let accuracy = document.querySelector(".accuracy")
@@ -10,6 +10,9 @@ let genderm = 0;
 let genderf = 0;
 let genderu = 0;
 
+
+//Detect Gender function using Gender Api 
+
 let getGender = async () => {
     try {
         let textInput = inputn.value.trim()
@@ -18,47 +21,76 @@ let getGender = async () => {
         
 
         if(result.gender === null || result.gender === 'unknown') {
-            message.innerHTML = "<h2>I didn't quite get that, enter a new name...</h2>"
-            message.style.color = "macaroon"
+            message.innerHTML = "<h4>I didn't quite get that, enter a new name...</h4>"
+            message.style.color = "red"
         }
         else {
-            name_sanitized.innerHTML = `<h2>Name: ${result.name_sanitized}</h2>`
+            name_sanitized.innerHTML = `<h4>Name: ${result.name_sanitized}</h4>`
             name_sanitized.style.color = "white"
 
-            gender.innerHTML = `<h2>Gender: ${result.gender}</h2>`
+            gender.innerHTML = `<h4>Gender: ${result.gender}</h4>`
             gender.style.color = "white"
 
-            accuracy.innerHTML = `<h2>Accuracy: ${result.accuracy}</h2>`
+            accuracy.innerHTML = `<h4>Accuracy: ${result.accuracy}</h4>`
             accuracy.style.color = "white"
 
-            samples.innerHTML = `<h2>Number of samples used: ${result.samples}</h2>`
+            samples.innerHTML = `<h4>Number of samples used: ${result.samples}</h4>`
             samples.style.color = "white"
 
             //country.innerHTML = `<h2>Country of origin: ${result.country}</h2>`
 
-            message.innerHTML = "<h2>Did I detect that correctly?</h2>"
+            message.innerHTML = "<h4>Did I detect that correctly?</h4>"
             message.style.color = "Lime"
         }
 
-        if(result.gender === 'female'){
-            genderf++;
-            console.log("There is this many female names generated: " + genderf);
-        }
-        else if (result.gender === 'male'){
-            genderm++;
-            console.log("There is this many male names generated: " + genderm);
-        
-        }
-        else{
-            genderu++;
-            console.log("There is this many unknown names generated: " + genderu );
 
-        }
 
-        
-    
-        
 
+
+
+            //Gender counter for the pie chart
+            if(result.gender === 'female'){
+                genderf++;
+                console.log("There is this many female names generated: " + genderf);
+            }
+            else if (result.gender === 'male'){
+                genderm++;
+                console.log("There is this many male names generated: " + genderm);
+            
+            }
+            else{
+                genderu++;
+                console.log("There is this many unknown names generated: " + genderu );
+
+            }
+
+
+                //pie chart
+
+                    anychart.onDocumentReady(function() {
+                    var data = [
+                        {x: "Female names", value: genderf,  exploded: true},
+                        {x: "Male names", value: genderm}
+                    ];
+                    
+                
+                    var chart = anychart.pie();
+                    
+                    chart.title("Names detected");
+                    
+                
+                    chart.data(data);
+                    
+                
+                    chart.legend().position("right");
+                
+                    chart.legend().itemsLayout("vertical");  
+                    
+                
+                    chart.container('container');
+                    chart.draw();
+        
+    });
 
     } catch (error) {
         console.log(`${error}`)
@@ -66,6 +98,11 @@ let getGender = async () => {
 }
 
 button.addEventListener("click", getGender)
+
+
+
+
+
 
 
 

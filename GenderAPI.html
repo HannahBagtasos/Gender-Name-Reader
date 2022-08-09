@@ -3,33 +3,13 @@
 <head> 
  <meta charset="UTF-8">
  <title> The Gender Reader Project </title> 
- <link rel="stylesheet" href="style.css"> <!-- had to take it out of the folder-->
+ <link rel="stylesheet" href="/css/style.css"> <!-- had to take it out of the folder-->
 
  <script defer src="./genderapi.js"> </script> <!-- Gender API -->
  <!-- <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script> --> <!-- Mermard API -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script> <!-- other Pie Chart -->
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"
- google.charts.load('current', {'packages':['corechart']});
- google.charts.setOnLoadCallback(drawChart);
- function drawChart() {
-
-    var data = google.visualization.arrayToDataTable([
-     
-      ['Female',     genderf],
-      ['Male',      genderm],
-      ['Unknown',  genderu]
-    ]);
-
-    var options = {
-      title: 'Genders detected'
-    };
-
-    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options);
-  }
- ></script>
-
+ <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script> <!-- Pie chart-->
+ <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
 
 </head>
 <body>
@@ -44,7 +24,7 @@
         
             <span class="first text">Gender</span> <span class="second text">Reader</span><br>
             <input class="input" type="text" id="input" placeholder="Enter names eg Jane Doe"> <!-- re-using and updating from old user input-->
-            <button class="submit" type="submit" id="submit">Submit</button>
+            <button class="button" type="button" id="button" >Submit</button>
             <p class="test name"></p>
             <p class="test gender"></p>
             <!-- <p class="test country"></p> -->
@@ -53,6 +33,10 @@
             <p class="test message"></p>
      
     </div>
+
+    <div id="container"></div>
+
+    
 
 
      
@@ -74,7 +58,7 @@
      <!-- old user input 
     <label for="Name">Name:</label> <input type="text" id="input" placeholder="Enter names eg Joe Smith">
     <br>
-    <button onclick="myFunction()" id="button">Submit</button>
+    <button onclick="myFunction()" id="button">button</button>
     -->
 
     <!-- User input section + Pie chart -->
@@ -114,12 +98,12 @@
     <!--
     <form id="input" action="https://gender-api.com/get?name={name}">
         <input type="text" placeholder="Name">
-        <button type="submit">Submit</button>
+        <button type="button">button</button>
     </form>
 
     <script>
-        $('#input').submit(function (e) {
-            e.preventDefault(); //doesn't submit
+        $('#input').button(function (e) {
+            e.preventDefault(); //doesn't button
 
             var form = $(this);
             var url = 'http://gender-api.com/';
