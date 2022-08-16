@@ -63,40 +63,45 @@ let getGender = async () => {
                 console.log("There is this many unknown names generated: " + genderu );
 
             }
+                pieChart(genderf, genderm);
 
-
-                //pie chart
-
-                    anychart.onDocumentReady(function() {
-                    var data = [
-                        {x: "Female names", value: genderf,  exploded: true},
-                        {x: "Male names", value: genderm}
-                    ];
-                    
                 
-                    var chart = anychart.pie();
-                    
-                    chart.title("Names detected");
-                    
-                
-                    chart.data(data);
-                    
-                
-                    chart.legend().position("right");
-                
-                    chart.legend().itemsLayout("vertical");  
-                    
-                
-                    chart.container('container');
-                    chart.draw();
-        
-    });
 
     } catch (error) {
         console.log(`${error}`)
     }
 }
 
+
+function pieChart(genderf, genderm){
+    //pie chart
+
+    anychart.onDocumentReady(function() {
+        var data = [
+            {x: "Female names", value: genderf,  exploded: true},
+            {x: "Male names", value: genderm}
+        ];
+        
+    
+        var chart = anychart.pie();
+        
+        chart.title("Names detected");
+        
+    
+        chart.data(data);
+        
+    
+        chart.legend().position("right");
+    
+        chart.legend().itemsLayout("vertical");  
+        
+    
+        chart.container('container');
+        chart.draw();
+
+});
+
+}
 button.addEventListener("click", getGender)
 
 
