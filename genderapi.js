@@ -98,11 +98,23 @@ function pieChart(genderf, genderm){
     
         chart.container('container');
         chart.draw();
+        
+        anyChartView.setChart(chart);
+
+       
+       
 
 });
 
+const updatePieChart = (data, dataOrder)=> {
+    genderf.addEventListener('change', e =>{
+    chart.data(data) = e.target.value;
+    chart.update();
+    })
+}
 }
 button.addEventListener("click", getGender)
+
 
 
 
