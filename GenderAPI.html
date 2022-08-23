@@ -10,6 +10,8 @@
  <script defer src="./genderapi.js"> </script> <!-- Gender API -->
  <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script> <!-- AnychartPie chart-->
  <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> <!-- Chart.js -->
+ <script src="./jquery.js"></script>
 
 </head>
 <body>
@@ -18,14 +20,16 @@
 
  <div class="page">
     <span class="first text">Gender</span> <span class="second text">Reader</span><br>
-
+    <h1> Detect the gender of a name</h1>
         
             <div class="row">
 
-                <div class="col-md-6">
+                <div class="col-md-6" >
                 <div class="box left" >
-                <h2>Gender Api Pie Chart</h2>
-                <canvas id="mychart"></canvas>
+                <h2> Gender Name Reader Pie Chart</h2>
+                
+                <canvas id="myChart" style="width:100%;max-width:600px;text-align:center;"></canvas>
+                <!--<canvas id="mychart"></canvas> -->
                 <div id="container"></div>
                 </div>
                 
@@ -34,6 +38,8 @@
 
                 <div class="col-md-6">
                 <div class="box right">
+                <div id="editableDiv">  Here is some <span class="JSON">encoded</span> text. </div>
+                <pre></pre>
                 <input class="input" type="text" id="input" placeholder="Enter names eg Jane Doe"> <!-- re-using and updating from old user input-->
                 <button class="button" type="button" id="button" >Submit</button>
                 <p class="test name"></p>
@@ -45,14 +51,7 @@
                 </div>
                 </div>
 
-                
-                
-
             </div>
-        
-
-
-
 
  </div>
 

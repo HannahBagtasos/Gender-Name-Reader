@@ -6,9 +6,9 @@ let accuracy = document.querySelector(".accuracy")
 // let country = document.querySelector(".country")  doesn't work properly
 let samples = document.querySelector(".samples")
 let message = document.querySelector(".message")
-let genderm = 0;
-let genderf = 0;
-let genderu = 0;
+var genderm = 0;
+var genderf = 0;
+var genderu = 0;
 
 
 //Detect Gender function using Gender Api 
@@ -20,8 +20,8 @@ let getGender = async () => {
         let result = await response.json()
         
 
-        if(result.gender === null || result.gender === 'unknown') {
-            message.innerHTML = "<h4>I didn't quite get that, enter a new name...</h4>"
+        if(result.gender === null || result.gender === 'undefined') {
+            message.innerHTML = "<h4>Sorry I didn't quite get that, enter a new name...</h4>"
             message.style.color = "red"
         }
         else {
@@ -63,8 +63,27 @@ let getGender = async () => {
                 console.log("There is this many unknown names generated: " + genderu );
 
             }
-                pieChart(genderf, genderm);
 
+                //Pie chart
+
+                var xValues = ["Male", "Female"];
+                var yValues = [genderm, genderf];
+                
+                var barColors = [
+                  "#b91d47",
+                  "#00aba9"
+                ];
+                
+                new Chart("myChart", {
+                  type: "pie",
+                  data: {
+                    labels: xValues,
+                    datasets: [{
+                      backgroundColor: barColors,
+                      data: yValues
+                    }]
+                }
+                });
                 
 
     } catch (error) {
@@ -73,6 +92,47 @@ let getGender = async () => {
 }
 
 
+//json list
+
+const myJSON =  [
+    {
+        "firstname":"John",
+        "secondname":"Swift"
+    }, 
+    {
+        "firstname":"Olivia", 
+        "secondname":"Goldsmith"
+    },
+    {
+        "firstname":"William ", 
+        "secondname":"Butler Yeats"
+    },
+    {
+        "firstname":"Elizabth", 
+        "secondname":"Brown"
+    },
+    {
+        "firstname":"William", 
+        "secondname":"Trevor"
+    }
+]
+
+//$('pre').html(JSON.stringify(data, undefined, 2));
+
+
+
+
+var editable = document.getElementById('editableDiv'),
+textContent = editable.textContent;
+// editable is "Here is some encoded text."
+
+
+
+
+button.addEventListener("click", getGender)
+
+
+/* old pie chart
 function pieChart(genderf, genderm){
     //pie chart
 
@@ -95,8 +155,10 @@ function pieChart(genderf, genderm){
     
         chart.legend().itemsLayout("vertical");  
         
-    
+        
+
         chart.container('container');
+        chart.data();
         chart.draw();
         
         anyChartView.setChart(chart);
@@ -105,39 +167,17 @@ function pieChart(genderf, genderm){
        
 
 });
-
-const updatePieChart = (data, dataOrder)=> {
+*/
+/*const updatePieChart = (data, dataOrder)=> {
     genderf.addEventListener('change', e =>{
     chart.data(data) = e.target.value;
     chart.update();
     })
 }
+
+
 }
-button.addEventListener("click", getGender)
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 /*default template on Gender API's website
 try {
     var GenderApi = require('gender-api.com-client');
