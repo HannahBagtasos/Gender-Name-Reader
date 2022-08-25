@@ -6,18 +6,23 @@ let accuracy = document.querySelector(".accuracy")
 // let country = document.querySelector(".country")  doesn't work properly
 let samples = document.querySelector(".samples")
 let message = document.querySelector(".message")
+let textArea = document.querySelector(".textArea")
 var genderm = 0;
 var genderf = 0;
 var genderu = 0;
 
 
 //Detect Gender function using Gender Api 
-
 let getGender = async () => {
     try {
         let textInput = inputn.value.trim()
-        let response = await fetch(`https://gender-api.com/get?name=${textInput}&key=orDyQFjgVfF8cgVsV5CSoRAXkmjEtckDX9Q7`)
+        let response = await fetch(`https://gender-api.com/get?split=${textInput}&key=orDyQFjgVfF8cgVsV5CSoRAXkmjEtckDX9Q7`)
         let result = await response.json()
+
+        // const multiInput = textArea.split(",");
+        // let multiResponse = await fetch(`https://gender-api.com/get?name=${multiInput}&multi=true&key=orDyQFjgVfF8cgVsV5CSoRAXkmjEtckDX9Q7`)
+        //let multiInput [] = textArea.value.trim;
+        //let result = await response.json()
         
 
         if(result.gender === null || result.gender === 'undefined') {
@@ -41,6 +46,8 @@ let getGender = async () => {
 
             message.innerHTML = "<h4>Did I detect that correctly?</h4>"
             message.style.color = "Lime"
+
+            console.log(result);
         }
 
 
@@ -126,6 +133,25 @@ var editable = document.getElementById('editableDiv'),
 textContent = editable.textContent;
 // editable is "Here is some encoded text."
 
+
+document.getElementById('import').onclick = function() {
+	var files = document.getElementById('selectFiles').files;
+  console.log(files);
+  if (files.length <= 0) {
+    return false;
+  }
+  
+  var fr = new FileReader();
+  
+  fr.onload = function(e) { 
+  console.log(e);
+    var result = JSON.parse(e.target.result);
+    var formatted = JSON.stringify(result, null, 2);
+		document.getElementById('result').value = formatted;
+  }
+  
+  fr.readAsText(files.item(0));
+};
 
 
 

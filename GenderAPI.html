@@ -38,8 +38,13 @@
 
                 <div class="col-md-6">
                 <div class="box right">
-                <div id="editableDiv">  Here is some <span class="JSON">encoded</span> text. </div>
-                <pre></pre>
+                <div id="editableDiv">  Here is some <span class="JSON">encoded</span> text. 
+                <input type="file" id="selectFiles" value="Import" /><br />
+                <button id="import">Import</button>
+                <textarea id="textArea">
+                </textarea>
+                </div>
+
                 <input class="input" type="text" id="input" placeholder="Enter names eg Jane Doe"> <!-- re-using and updating from old user input-->
                 <button class="button" type="button" id="button" >Submit</button>
                 <p class="test name"></p>
