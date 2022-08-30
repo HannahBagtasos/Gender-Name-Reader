@@ -1,24 +1,16 @@
-
-
-[
-    {
-        "firstname":"John",
-        "secondname":"Swift"
-    }, 
-    {
-        "firstname":"Olivia", 
-        "secondname":"Goldsmith"
-    },
-    {
-        "firstname":"William ", 
-        "secondname":"Butler Yeats"
-    },
-    {
-        "firstname":"Elizabth", 
-        "secondname":"Brown"
-    },
-    {
-        "firstname":"William", 
-        "secondname":"Trevor"
-    }
-]
+{
+    "books":
+              [
+                {
+                    "title": "test1",
+                    "author":"John Swift"
+                },
+                {
+                    "title": "test2",
+                    "author":"Olivia Goldsmith"
+                }, {
+                    "title": "test3",
+                    "author":"William Butler Yeats"
+                }
+              ]
+}

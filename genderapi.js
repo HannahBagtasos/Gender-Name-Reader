@@ -134,7 +134,7 @@ textContent = editable.textContent;
 // editable is "Here is some encoded text."
 
 
-document.getElementById('import').onclick = function() {
+/*document.getElementById('import').onclick = function() {
 	var files = document.getElementById('selectFiles').files;
   console.log(files);
   if (files.length <= 0) {
@@ -152,7 +152,53 @@ document.getElementById('import').onclick = function() {
   
   fr.readAsText(files.item(0));
 };
+*/
 
+(function(){
+    
+    function onChange(event) {
+        var reader = new FileReader();
+        reader.onload = onReaderLoad;
+        reader.readAsText(event.target.files[0]);
+    }
+
+    function onReaderLoad(event){
+        console.log(event.target.result);
+        var obj = JSON.parse(event.target.result);
+        console.log(obj.books[0].author)
+        for (var authors in obj.books) {
+            for (var authors in obj.books[authors]) {
+                
+                alert(authors + ', ' );
+            }
+        }
+        /*function printValues(obj) {
+           for(var k in obj) {
+                if(obj[k] instanceof Object) {
+                    printValues(obj[k]);
+                } else {
+                    document.write(obj[k] + "<br>");
+                };
+            }
+        };
+        printValues(obj);
+
+        document.write("<hr>");
+        document.write(obj["firstname"] + "<br>"); 
+        //console.log(obj.firstname, obj.secondname);
+        //alert_data(obj.firstname, obj.secondname);
+        */
+        
+    }
+    
+
+    function alert_data(firstname){
+        alert('firstname : ' + firstname );
+    }
+ 
+    document.getElementById('file').addEventListener('change', onChange);
+
+}());
 
 
 button.addEventListener("click", getGender)
