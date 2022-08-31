@@ -18,11 +18,6 @@ let getGender = async () => {
         let textInput = inputn.value.trim()
         let response = await fetch(`https://gender-api.com/get?split=${textInput}&key=orDyQFjgVfF8cgVsV5CSoRAXkmjEtckDX9Q7`)
         let result = await response.json()
-
-        // const multiInput = textArea.split(",");
-        // let multiResponse = await fetch(`https://gender-api.com/get?name=${multiInput}&multi=true&key=orDyQFjgVfF8cgVsV5CSoRAXkmjEtckDX9Q7`)
-        //let multiInput [] = textArea.value.trim;
-        //let result = await response.json()
         
 
         if(result.gender === null || result.gender === 'undefined') {
@@ -49,10 +44,6 @@ let getGender = async () => {
 
             console.log(result);
         }
-
-
-
-
 
 
             //Gender counter for the pie chart
@@ -99,6 +90,32 @@ let getGender = async () => {
 }
 
 
+
+
+
+
+button.addEventListener("click", getGender)
+
+/*document.getElementById('import').onclick = function() {
+	var files = document.getElementById('selectFiles').files;
+  console.log(files);
+  if (files.length <= 0) {
+    return false;
+  }
+  
+  var fr = new FileReader();
+  
+  fr.onload = function(e) { 
+  console.log(e);
+    var res = JSON.parse(e.target.result);
+    var formatted = JSON.stringify(res, null, 2);
+		document.getElementById('res').value = formatted;
+  }
+  
+  fr.readAsText(files.item(0));
+};
+*/
+
 //json list
 
 const myJSON =  [
@@ -124,151 +141,8 @@ const myJSON =  [
     }
 ]
 
-//$('pre').html(JSON.stringify(data, undefined, 2));
 
 
 
 
-var editable = document.getElementById('editableDiv'),
-textContent = editable.textContent;
-// editable is "Here is some encoded text."
 
-
-/*document.getElementById('import').onclick = function() {
-	var files = document.getElementById('selectFiles').files;
-  console.log(files);
-  if (files.length <= 0) {
-    return false;
-  }
-  
-  var fr = new FileReader();
-  
-  fr.onload = function(e) { 
-  console.log(e);
-    var res = JSON.parse(e.target.result);
-    var formatted = JSON.stringify(res, null, 2);
-		document.getElementById('res').value = formatted;
-  }
-  
-  fr.readAsText(files.item(0));
-};
-*/
-
-(function(){
-    
-    function onChange(event) {
-        var reader = new FileReader();
-        reader.onload = onReaderLoad;
-        reader.readAsText(event.target.files[0]);
-    }
-
-    function onReaderLoad(event){
-        console.log(event.target.result);
-        var obj = JSON.parse(event.target.result);
-        console.log(obj.books[0].author)
-        for (var authors in obj.books) {
-            for (var authors in obj.books[authors]) {
-                
-                alert(authors + ', ' );
-            }
-        }
-        /*function printValues(obj) {
-           for(var k in obj) {
-                if(obj[k] instanceof Object) {
-                    printValues(obj[k]);
-                } else {
-                    document.write(obj[k] + "<br>");
-                };
-            }
-        };
-        printValues(obj);
-
-        document.write("<hr>");
-        document.write(obj["firstname"] + "<br>"); 
-        //console.log(obj.firstname, obj.secondname);
-        //alert_data(obj.firstname, obj.secondname);
-        */
-        
-    }
-    
-
-    function alert_data(firstname){
-        alert('firstname : ' + firstname );
-    }
- 
-    document.getElementById('file').addEventListener('change', onChange);
-
-}());
-
-
-button.addEventListener("click", getGender)
-
-
-/* old pie chart
-function pieChart(genderf, genderm){
-    //pie chart
-
-    anychart.onDocumentReady(function() {
-        var data = [
-            {x: "Female names", value: genderf,  exploded: true},
-            {x: "Male names", value: genderm}
-        ];
-        
-    
-        var chart = anychart.pie();
-        
-        chart.title("Names detected");
-        
-    
-        chart.data(data);
-        
-    
-        chart.legend().position("right");
-    
-        chart.legend().itemsLayout("vertical");  
-        
-        
-
-        chart.container('container');
-        chart.data();
-        chart.draw();
-        
-        anyChartView.setChart(chart);
-
-       
-       
-
-});
-*/
-/*const updatePieChart = (data, dataOrder)=> {
-    genderf.addEventListener('change', e =>{
-    chart.data(data) = e.target.value;
-    chart.update();
-    })
-}
-
-
-}
-*/
-/*default template on Gender API's website
-try {
-    var GenderApi = require('gender-api.com-client');
-
-    var genderApiClient = new GenderApi.Client('orDyQFjgVfF8cgVsV5CSoRAXkmjEtckDX9Q7');
-
-    genderApiClient.getByFirstName('elizabeth', function (response) {
-        console.log(response.gender); 
-        console.log(response.accuracy); 
-    });
-
-    genderApiClient.getByFirstNameAndCountry('john', 'US', function (response) {
-        console.log(response.gender); 
-        console.log(response.accuracy);
-    });
-
-}
-catch(e) {
-    console.log('Error:', e);
-}
-
-*/
