@@ -28,7 +28,7 @@ form.addEventListener("submit", function(evt) {
       //result2.style.display = "inline-block";
      //Gender counter for the pie chart
      var response2 = JSON.parse(xhr.responseText) 
-     //console.log(response2.gender);
+    
     for(person in response2){
      if(response2[person].gender === 'female'){
         gender2f++;
@@ -65,6 +65,9 @@ form.addEventListener("submit", function(evt) {
             }]
         }
         });
+
+        
+       
     }
     
 

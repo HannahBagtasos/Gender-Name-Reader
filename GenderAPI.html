@@ -11,7 +11,9 @@
 
     <!-- The JavaScript files-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> <!-- Chart.js -->
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+
 </head>
 <body>
    
@@ -39,13 +41,13 @@
                 <div class="box right">
                 <div > 
 
-                <h3>JSON REQUEST</h3>
+                <h3>JSON Request</h3>
                 <form id="form">
-                <input id="json" placeholder="Paste json here" value='[{"full_name":"Sandra"},{"full_name":"Robert"}]'>
-                  
-                <div class="container2">
+                <input id="json" placeholder="Paste JSON here" style="width: 450px;" value='[{"full_name":"Sandra"},{"full_name":"Robert"}]'>
+                
+            
                 <input type="submit">
-                </div>
+              
                 </form>
                   
                 <div class="container2">
@@ -56,7 +58,7 @@
                       <pre id="result2"></pre>
                 </div>
                   
-                <h3>QUERY DETAILS</h3>
+                <h3>Type in a name</h3>
                 <table>
                 </table>
                   
@@ -67,7 +69,7 @@
                 
                 </div>
 
-                <input class="input" type="text" id="input" placeholder="Enter names eg Jane Doe"> <!-- re-using and updating from old user input-->
+                <input class="input" type="text" id="input" style="width: 450px;"  placeholder="Enter name eg Jane Doe"> <!-- re-using and updating from old user input-->
                 <button class="button" type="button" id="button" >Submit</button>
                 <p class="test name"></p>
                 <p class="test gender"></p>
@@ -79,6 +81,14 @@
                 </div>
 
             </div>
+
+            <h1> Samples:</h1>
+            <p>
+               Multiple Names: [{"full_name":"Theresa Miller"},{"full_name":"Thomas Johnson"}] <br>
+               Emails: [{"email":"thomas.clarks@hotmail.com"},{"email":"theresa.miller14@gmail.com"}]
+
+
+            </p>
 
  </div>
 

@@ -74,8 +74,18 @@ body {
   color:white;
   padding :100px;
  }
+
+ p.round {
+  border: 2px solid White;
+  width: 450px;
+  
+  border-radius: 12px;
+  padding: 5px;
+}
   input{
     font-size:24px;
+    
+    
     font-family: Fredoka;
   }
 
@@ -111,6 +121,12 @@ body {
     margin:10px 0;
   }
 
+  p:last-child{
+    color:white;
+ 
+    font-size: 24px;
+
+  }
 
   
   html, body, #left {
