@@ -1,21 +1,30 @@
+var apiEndpoint = "https://gender-api.com/v2/gender"
+var urlParams = new URLSearchParams(window.location.search);
+var xhr = new XMLHttpRequest();
+var gender2m = 0;
+var gender2f = 0;
+var gender2u = 0;
 
- document.getElementById('import').onclick = function() {
-	var files = document.getElementById('selectFiles').files;
-  console.log(files);
-  if (files.length <= 0) {
-    return false;
-  }
-  
-  var fr = new FileReader();
-  
-  fr.onload = function(e) { 
-  console.log(e);
-    var res = JSON.parse(e.target.result);
-    var formatted = JSON.stringify(res, null, 2);
-		document.getElementById('res').value = formatted;
-  }
-  
-  fr.readAsText(files.item(0));
-};
+function jsonReader(event){
+    var fr = new FileReader();
+    fr.onload = readFile;
+    fr.readAsText(event.target.files[0]);
+}
+function readFile(event){
+    var object = JSON.parse(event.target.result);
+
+    xhr.open("POST", apiEndpoint);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("Authorization", "Bearer " + "02dd39f7e003776aa4ba778a0df38c002a051d7086b8fae1c6915ac9f756d55a");
+    
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText)
+            console.log(response)
+        }
+    }
+    xhr.send(JSON.stringify(object));
+}
+document.getElementById('selectFiles').addEventListener('change', jsonReader);
  
-
+  
